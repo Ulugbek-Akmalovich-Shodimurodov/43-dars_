@@ -85,7 +85,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form id="add-product-form">
                         <div class="mb-3">
                             <label for="product-title" class="form-label">Title</label>
                             <input type="text" class="form-control" id="product-title" placeholder="Falon telefon">
@@ -97,9 +97,12 @@
                         <div class="mb-3">
                             <label for="product-manufacturer" class="form-label">Manufacturer</label>
                             <select class="form-select" id="product-manufacturer">
-                <option selected disabled value="0">Select a manufacturer</option>
-                <!-- manufacturers array bu yerga kelishi kerak -->
-              </select>
+                    <option selected  value="Samsung">Samsung</option>
+                    <option selected  value="Apple">Apple</option>
+                    <option selected  value="Xiomi">Xiomi</option>
+                    <option selected  value="Nokia">Nokia</option>
+                    <!-- manufacturers array bu yerga kelishi kerak -->
+                </select>
                         </div>
 
                         <div class="mb-3">
@@ -142,7 +145,7 @@
 
               <div class="position-absolute top-0 end-0 d-flex">
                 <button class="btn rounded-0 btn-secondary"><i class="fa-solid fa-pen"></i></button>
-                <button class="btn rounded-0 btn-danger"><i class="fa-solid fa-trash"></i></button>
+                <button class="btn rounded-0 btn-danger delete-btn"><i style="pointer-events: none;" class="fa-solid fa-trash"></i></button>
               </div>
             </div>
           </div>

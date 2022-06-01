@@ -26,7 +26,7 @@ const products = [{
         benefits: ["32gb", "1tb"]
     },
     {
-        id: 125,
+        id: 126,
         title: "Samgung Note 22 Ultra",
         img: "https://picsum.photos/300/200",
         price: 9400000,
@@ -35,11 +35,17 @@ const products = [{
         benefits: ["32gb", "1tb"]
     },
     {
-        id: 125,
+        id: 127,
         title: "Samgung Note 22 Ultra",
         img: "https://picsum.photos/300/200",
         price: 9400000,
         model: "Samsung",
+        addedDate: "2020-12-12",
+        benefits: ["32gb", "1tb"]
+    },
+    {
+        id: 128,
+        title: "Samgung Note 22 Ultra",
         addedDate: "2020-12-12",
         benefits: ["32gb", "1tb"]
     }
