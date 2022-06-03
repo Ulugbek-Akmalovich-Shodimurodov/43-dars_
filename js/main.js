@@ -54,7 +54,7 @@ const renderProduct = () => {
 renderProduct();
 
 const elAddNewProduct = document.querySelector("#add-product-form");
-
+const elAddProductModal = document.querySelector("#add-product-modal")
 
 elAddNewProduct.addEventListener("submit", (evt) => {
     evt.preventDefault();
@@ -81,6 +81,8 @@ elAddNewProduct.addEventListener("submit", (evt) => {
         elCardWrapper.prepend(elNewProduct);
 
         elAddNewProduct.reset();
+
+        addProductModal.hide();
     }
 })
 
@@ -92,7 +94,7 @@ const elEditProductBenefits = elEditProductForm.querySelector("#edit-benefits");
 const elProductModal = document.querySelector("#edit-product-modal")
 const elProductManufacturer = document.querySelector("#edit-product-manufacturer");
 const editProductModal = new bootstrap.Modal(elProductModal)
-
+const addProductModal = new bootstrap.Modal(elAddProductModal)
 elCardWrapper.addEventListener("click", (evt) => {
     if (evt.target.matches(".delete-btn")) {
         const clickedBtnId = +evt.target.dataset.id;
