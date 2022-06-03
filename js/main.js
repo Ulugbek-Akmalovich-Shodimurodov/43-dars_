@@ -35,11 +35,15 @@ const createGadgetCard = (product) => {
     const elDeleteBtn = elGadgetCard.querySelector(".delete-btn");
     elDeleteBtn.dataset.id = id
 
+    const elEditBtn = elGadgetCard.querySelector(".btn-secondary");
+    elEditBtn.dataset.id = id;
+
     return elGadgetCard;
 
 }
 
 const renderProduct = () => {
+    elCardWrapper.innerHTML = "";
     products.forEach((product) => {
 
         elCardWrapper.append(createGadgetCard(product))
@@ -50,6 +54,7 @@ const renderProduct = () => {
 renderProduct();
 
 const elAddNewProduct = document.querySelector("#add-product-form");
+
 
 elAddNewProduct.addEventListener("submit", (evt) => {
     evt.preventDefault();
@@ -79,15 +84,66 @@ elAddNewProduct.addEventListener("submit", (evt) => {
     }
 })
 
+const elEditProductForm = document.querySelector("#edit-product-form");
+const elEditProductName = elEditProductForm.querySelector("#edit-product-title");
+const elEditProductPrice = elEditProductForm.querySelector("#edit-price");
+const elEditProductManufacturer = elEditProductForm.querySelector(".edit-product-manufacturer");
+const elEditProductBenefits = elEditProductForm.querySelector("#edit-benefits");
+const elProductModal = document.querySelector("#edit-product-modal")
+const elProductManufacturer = document.querySelector("#edit-product-manufacturer");
+const editProductModal = new bootstrap.Modal(elProductModal)
+
 elCardWrapper.addEventListener("click", (evt) => {
     if (evt.target.matches(".delete-btn")) {
         const clickedBtnId = +evt.target.dataset.id;
         const clickedBtnIndex = products.findIndex((product) => {
-            return product.id === clickedBtnId
+            return product.id === clickedBtnId;
         })
-        console.log(clickedBtnIndex);
         products.splice(clickedBtnIndex, 1);
-        elCardWrapper.innerHTML = ""
+
+        renderProduct();
     }
-    renderProduct();
+
+    if (evt.target.matches(".btn-secondary")) {
+        const clickedBtnId = +evt.target.dataset.id;
+        const clickedBtnObj = products.find((product) => product.id === clickedBtnId)
+
+        if (clickedBtnObj) {
+
+            elEditProductName.value = clickedBtnObj.title || "";
+            elEditProductPrice.value = clickedBtnObj.price || "";
+            elEditProductBenefits.value = clickedBtnObj.benefits.join(" ") || "";
+            elEditProductForm.dataset.id = clickedBtnId;
+            elProductManufacturer.value = clickedBtnObj.model;
+        }
+    }
+})
+
+elEditProductForm.addEventListener("submit", (evt) => {
+    evt.preventDefault();
+
+    const submittingItemId = +evt.target.dataset.id;
+    const nameValue = elEditProductName.value.trim();
+    const elProductPrice = elEditProductPrice.value.trim();
+    const elBenefits = elEditProductBenefits.value.trim();
+    const elManufacturerValue = elProductManufacturer.value
+    console.log(elManufacturerValue);
+    if (nameValue && elBenefits && elManufacturerValue && elProductPrice > 0) {
+        const submittingProductIndex = products.findIndex(student => student.id === submittingItemId)
+
+        const editingProduct = {
+            id: submittingItemId,
+            title: nameValue,
+            img: "https://picsum.photos/300/200",
+            price: elProductPrice,
+            model: elManufacturerValue,
+            addedDate: new Date().toISOString(),
+            benefits: elEditProductBenefits.value.split(' ')
+        }
+
+        products.splice(submittingProductIndex, 1, editingProduct);
+        renderProduct();
+
+        editProductModal.hide();
+    }
 })

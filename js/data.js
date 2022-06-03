@@ -3,7 +3,7 @@ const products = [{
         title: "Redmi Note 10 Pro",
         img: "https://picsum.photos/300/200",
         price: 4300000,
-        model: "Xiaomi",
+        model: "Xiomi",
         addedDate: "2021-11-12",
         benefits: ["8gb", "128gb", "Waterproof"]
     },
