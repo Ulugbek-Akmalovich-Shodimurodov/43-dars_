@@ -24,7 +24,7 @@
         <div class="row mt-5">
             <div class="col-3">
                 <h2 class="h4 mb-4">Filter</h2>
-                <form action="#">
+                <form id="filter" action="#">
                     <div class="mb-3">
                         <label for="search" class="form-label">Search</label>
                         <input type="search" class="form-control" id="search" placeholder="Falonchi">
@@ -44,19 +44,21 @@
                     <div class="mb-3">
                         <label for="manufacturer" class="form-label">Manufacturer</label>
                         <select class="form-select" id="manufacturer">
-              <option value="0">All</option>
-              <!-- manufacturers array bu yerga kelishi kerak -->
-
-      
+                            <!-- manufacturers array bu yerga kelishi kerak -->
+                            <option selected  value="Samsung">Samsung</option>
+                            <option selected  value="Apple">Apple</option>
+                            <option selected  value="Xiomi">Xiomi</option>
+                            <option selected  value="Nokia">Nokia</option>
+                            <option selected  value="0">All</option>
             </select>
                     </div>
 
                     <div class="mb-3">
                         <label for="sortby" class="form-label">Sort by</label>
                         <select class="form-select" id="sortby">
-              <option value="1">Name</option>
-              <option value="2">Price: to lowest</option>
-              <option value="3">Price: to highest</option>
+            <option value="1">Name</option>
+            <option value="2">Price: to lowest</option>
+            <option value="3">Price: to highest</option>
             </select>
                     </div>
 
@@ -178,7 +180,7 @@
 
     <template class="gadget-card-template">
         <li  class="col-4">
-          <div style="width: 90%; height: 95%;" class="card">
+          <div style="width: 90%; height: 98%;" class="card">
             <img src="https://picsum.photos/300/200" alt="" class="card-img-top">
             <div class="card-body">
               <h4 class="gadget_title card-title"></h4>

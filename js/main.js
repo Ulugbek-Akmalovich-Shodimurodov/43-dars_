@@ -42,9 +42,9 @@ const createGadgetCard = (product) => {
 
 }
 
-const renderProduct = () => {
+const renderProduct = (productArr = products) => {
     elCardWrapper.innerHTML = "";
-    products.forEach((product) => {
+    productArr.forEach((product) => {
 
         elCardWrapper.append(createGadgetCard(product))
     })
@@ -148,4 +148,56 @@ elEditProductForm.addEventListener("submit", (evt) => {
 
         editProductModal.hide();
     }
+})
+
+const elFilterForm = document.querySelector("#filter");
+
+elFilterForm.addEventListener("submit", (evt) => {
+    evt.preventDefault();
+
+    const elProducts = evt.target.elements;
+    const searchFormvalue = elProducts.search.value;
+    const elFromValue = +elProducts.from.value;
+    const elToPrice = +elProducts.to.value;
+    const elSortValue = +elProducts.sortby.value;
+    const elManufacturer = elProducts.manufacturer.value;
+
+    const filtredProduct = products.filter(function(product) {
+        const isTitleMatches = product.title.toLowerCase().includes(searchFormvalue.toLowerCase());
+        return isTitleMatches;
+    }).filter(product => {
+        const productPrice = +product.price;
+        return elFromValue <= productPrice;
+    }).filter(product => {
+        if (elToPrice == "") {
+            return product;
+        }
+        const productPrice = +product.price;
+        return elToPrice >= productPrice;
+    }).filter(function(product) {
+        if (elManufacturer == "0") {
+            return products;
+        } else {
+            const isTitleMatches = product.model.toLowerCase().includes(elManufacturer.toLowerCase());
+            return isTitleMatches;
+        }
+    }).sort((a, b) => {
+        switch (elSortValue) {
+            case 1:
+                if (a.title < b.title) {
+                    return 1;
+                } else if (a.title === b.title) {
+                    return 0;
+                }
+                return -1;
+            case 2:
+                return a.price - b.price;
+            case 3:
+                return b.price - a.price;
+        }
+    });
+
+    renderProduct(filtredProduct);
+
+
 })

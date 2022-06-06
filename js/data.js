@@ -9,7 +9,7 @@ const products = [{
     },
     {
         id: 124,
-        title: "Samgung Note 20 Ultra",
+        title: "Samsung Note 20 Ultra",
         img: "https://picsum.photos/300/200",
         price: 8300000,
         model: "Samsung",
@@ -18,7 +18,7 @@ const products = [{
     },
     {
         id: 125,
-        title: "Samgung Note 22 Ultra",
+        title: "Samsung Note 22 Ultra",
         img: "https://picsum.photos/300/200",
         price: 9400000,
         model: "Samsung",
@@ -27,7 +27,7 @@ const products = [{
     },
     {
         id: 126,
-        title: "Samgung Note 22 Ultra",
+        title: "Samsung Note 22 Ultra",
         img: "https://picsum.photos/300/200",
         price: 9400000,
         model: "Samsung",
@@ -36,7 +36,7 @@ const products = [{
     },
     {
         id: 127,
-        title: "Samgung Note 22 Ultra",
+        title: "Samsung Note 22 Ultra",
         img: "https://picsum.photos/300/200",
         price: 9400000,
         model: "Samsung",
@@ -45,7 +45,7 @@ const products = [{
     },
     {
         id: 128,
-        title: "Samgung Note 22 Ultra",
+        title: "Samsung Note 22 Ultra",
         addedDate: "2020-12-12",
         benefits: ["32gb", "1tb"]
     }
