@@ -42,8 +42,11 @@ const createGadgetCard = (product) => {
 
 }
 
+const elCountWrapper = document.querySelector(".count-wrapper");
+
 const renderProduct = (productArr = products) => {
     elCardWrapper.innerHTML = "";
+    elCountWrapper.textContent = `Count: ${ productArr.length}`;
     productArr.forEach((product) => {
 
         elCardWrapper.append(createGadgetCard(product))
@@ -77,6 +80,7 @@ elAddNewProduct.addEventListener("submit", (evt) => {
         }
 
         products.unshift(addingProduct);
+        elCountWrapper.textContent = `Count: ${ products.length}`;
         const elNewProduct = createGadgetCard(addingProduct);
         elCardWrapper.prepend(elNewProduct);
 
@@ -169,11 +173,8 @@ elFilterForm.addEventListener("submit", (evt) => {
         const productPrice = +product.price;
         return elFromValue <= productPrice;
     }).filter(product => {
-        if (elToPrice == "") {
-            return product;
-        }
-        const productPrice = +product.price;
-        return elToPrice >= productPrice;
+        return elToPrice >= elFromValue ? elToPrice >= product.price : true;
+
     }).filter(function(product) {
         if (elManufacturer == "0") {
             return products;
